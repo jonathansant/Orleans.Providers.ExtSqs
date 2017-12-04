@@ -1,0 +1,11 @@
+{
+  "name": "@jonathansant/external-sqs-stream-provider",
+  "version": "0.1.0",
+  "scripts": {
+    "pack": "bash ./tools/pack.sh",
+    "prepublish:dev": "npm run pack",
+    "publish:dev": "dotnet nuget push *.nupkg -k jonathan-nuget",
+    "postpublish:dev": "rm -rf *.nupkg",
+    "test": "cd test && dotnet xunit"
+  }
+}
