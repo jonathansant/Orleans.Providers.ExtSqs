@@ -2,16 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Orleans streaming provider for Kinesis.</Description>
-    <Product>Odin</Product>
-    <Company>Cerberus</Company>
-    <Authors>Cerberus</Authors>
-    <PackageTags>orleans kinesis streams providers</PackageTags>
+    <Description>Orleans streaming provider for SQS.</Description>
+    <Product>Orleans</Product>
+    <Company>Sucrose</Company>
+    <Authors>Jonathan Sant</Authors>
+    <PackageTags>orleans sqs streams providers</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://bitbucket.org/cpmmwteam/Odin.Orleans.Streams.Kinesis.git</RepositoryUrl>
-    <PackageProjectUrl>https://bitbucket.org/cpmmwteam/Odin.Orleans.Streams.Kinesis</PackageProjectUrl>
-    <PackageIconUrl>https://bitbucket.org/account/user/cpmmwteam/projects/ODIN/avatar/256?ts=1493822240</PackageIconUrl>
+    <RepositoryUrl>https://github.com/jonathansant/Orleans.Providers.ExtSqs</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jonathansant/Orleans.Providers.ExtSqs</PackageProjectUrl>
     <AssemblyName>Orleans.Providers.ExtSqs</AssemblyName>
     <RootNamespace>Orleans.Providers.ExtSqs</RootNamespace>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
@@ -33,7 +32,6 @@
 
   <!-- packages -->
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <PackageReference Include="Odin.Orleans.Core" Version="2.2.*" />
   </ItemGroup>
 
   <!-- libraries -->
