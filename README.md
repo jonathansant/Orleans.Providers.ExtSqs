@@ -34,13 +34,16 @@ In code:
 ```
 
 ## Implementation
-The `SqsStreamProvider` is implemented using the Orleans Guidelines to implement a new `PersistentStreamProvider` over the PersistentStreamProvider class (shown in this page: http://dotnet.github.io/orleans/Orleans-Streams/Streams-Extensibility)
+The `ExtSqsStreamProvider` is implemented using the Orleans Guidelines to implement a new `PersistentStreamProvider` over the PersistentStreamProvider class (shown in this page: http://dotnet.github.io/orleans/Orleans-Streams/Streams-Extensibility).
+
+*Note*: that it is built upon the foundation of Microsoft's `SQSStreamProvider` found here: https://github.com/dotnet/orleans/tree/master/src/OrleansAWSUtils/Streams
 
 ## Queue Setup
 In order for the provider to work as expected there are some constraints on the queue naming:
 - Always start with a namespace - The provider will list all queues that begin with the supplied `QueuePrefix` in the configuration
 - Following the namespace the queue index must be appended - This will be used for load balancing purposes
 - Finally `.fifo` must be used for FIFO queues
+
 ### Queue Template
 
 ```
@@ -51,6 +54,13 @@ Example: `player-updates_0.fifo`
 ## Usage
 
 #### Producing Messages
+
+##### External Messages
+- `ExtSqs` will take the **`MessageGroupId`** as the `StreamId`
+- The `QueueNamespace` is the queue name without the `QueueIndex` and `.fifo` postfix
+- Messages should also contain an attribute that identifies that the message is produced externally. This is configurable via the config builder's `IdentifyExternallyProducesMessagesWith()` with the default being `"External"`
+
+##### Internal Messages
 ```csharp
 var streamProvider = client.GetStreamProvider("ExtSqsProvider");
 var stream = streamProvider.GetStream<TestModel>(testGrain.GetPrimaryKeyString(), "player-updates");
