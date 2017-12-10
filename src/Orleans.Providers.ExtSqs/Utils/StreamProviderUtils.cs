@@ -1,5 +1,4 @@
 ﻿using System;
-using Logos.Utility;
 
 namespace Orleans.Providers.ExtSqs.Utils
 {
